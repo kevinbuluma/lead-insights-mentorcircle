@@ -1,0 +1,9 @@
+import {createFileRoute} from '@tanstack/react-router';
+import {useState} from 'react';
+import {Mic,ArrowUpRight} from 'lucide-react';
+import {Button} from '@/components/ui/button';
+import {PageHero,SectionLabel,ClosingCTA} from '@/components/site/editorial';
+import {insightCategories,insights} from '@/content/site';
+import {pageHead} from '@/lib/seo';
+export const Route=createFileRoute('/insights')({component:Insights,head:()=>pageHead('Insights & conversations','Perspectives on growth, market access, leadership, culture, customer experience and mentorship. Approved insights coming soon.','/insights')});
+function Insights(){const [category,setCategory]=useState('All insights');return <><PageHero eyebrow="INSIGHTS & PERSPECTIVES" title="Ideas worth reflecting on. Conversations worth having." description="Perspectives on business, leadership and growth across Africa."/><section className="content-width section-band"><div className="category-tabs" role="group" aria-label="Insight categories">{['All insights',...insightCategories].map(c=><Button key={c} variant="ghost" aria-pressed={c===category} onClick={()=>setCategory(c)}>{c}</Button>)}</div><div className="coming-soon"><SectionLabel>{category==='All insights'?'THOUGHT LEADERSHIP':category.toUpperCase()}</SectionLabel><h2>Fresh perspectives.<br/>Coming soon.</h2><p>Approved articles, podcasts and videos will appear here as they become available.</p>{insights.filter(i=>category==='All insights'||i.category===category).map(i=><article key={i.slug}><h3>{i.title}</h3><p>{i.body}</p></article>)}</div><div className="podcast-feature"><Mic size={40} strokeWidth={1}/><div><SectionLabel>CONVERSATIONS WITH JANE</SectionLabel><h3>On leadership, work and what comes next.</h3><p>Podcast appearances and speaking engagements will be shared here when confirmed.</p></div><ArrowUpRight size={26}/></div></section><ClosingCTA/></>;}

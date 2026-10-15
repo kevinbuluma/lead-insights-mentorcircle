@@ -1,24 +1,17 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowUpRight, ArrowDown, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ConversationButton } from '@/components/site/site-shell';
+import { SectionLabel, ServiceGrid, MarketSteps, JaneFeature, ClosingCTA, city, dialogue } from '@/components/site/editorial';
+import { experience } from '@/content/site';
+import { pageHead } from '@/lib/seo';
+export const Route=createFileRoute('/')({component:Home,head:()=>({...pageHead('Strategic advisory, growth & leadership across Africa','Nairobi-based strategic advisory, market access, leadership and transformation, founded and led by Jane Mburia.','/'),scripts:[{type:'application/ld+json',children:JSON.stringify({'@context':'https://schema.org','@type':'Organization',name:'Lead Insights Africa Consulting',founder:{'@type':'Person',name:'Jane Mburia'},email:'jmburia@leadinsightsafrica.com',telephone:'+254721228498',address:{'@type':'PostalAddress',addressLocality:'Nairobi',addressCountry:'KE'},sameAs:['https://www.linkedin.com/in/jane-mburia']})}]})});
+function Home(){return <>
+<section className="home-hero"><img src={city} width={1920} height={1024} alt="Editorial view of Nairobi’s city skyline and business district at golden hour" fetchPriority="high"/><div className="image-shade"/><div className="content-width hero-content"><SectionLabel>LEAD INSIGHTS AFRICA CONSULTING</SectionLabel><h1>Helping organisations grow<br className="desktop-break"/> with clarity, connection<br className="desktop-break"/> and confidence across Africa.</h1><p>Lead Insights Africa Consulting works with businesses, institutions and leaders navigating growth, market opportunities, partnerships and organisational change across Kenya, East Africa and the wider African region.</p><div className="hero-actions"><ConversationButton/><Button asChild variant="outline" className="action-button hero-secondary"><Link to="/services">Explore our services <ArrowUpRight/></Link></Button></div><div className="hero-location"><MapPin size={14}/> Nairobi, Kenya. Regional reach.</div></div><a className="hero-scroll" href="#perspective" aria-label="Explore our perspective"><ArrowDown size={19}/></a></section>
+<section className="credibility-strip"><div className="content-width"><p><span>20+ years</span> of senior corporate and<br/> financial-sector leadership</p><p><span>Nairobi-based</span>, with<br/> regional market perspective</p><p><span>Strategic advisory, market access,</span><br/> leadership and transformation</p></div></section>
+<section id="perspective" className="intro-section content-width"><div><SectionLabel>INSIGHT THAT MOVES YOU FORWARD</SectionLabel><h2>Local insight.<br/>Senior perspective.<br/><em>Practical partnership.</em></h2></div><div><p className="intro-lead">The right perspective changes<br className="desktop-break"/> what’s possible.</p><p>Lead Insights Africa Consulting supports organisations that need more than a market overview. We work alongside leadership teams to shape strategy, build the right relationships, strengthen capability and move opportunities forward.</p><Link to="/about" className="text-link">Get to know Lead Insights <ArrowUpRight size={18}/></Link></div></section>
+<section className="services-section"><div className="content-width"><div className="section-heading"><div><SectionLabel>HOW WE CAN HELP</SectionLabel><h2>Expertise for your next move.</h2></div><Link to="/services" className="text-link">Explore all services <ArrowUpRight size={18}/></Link></div><ServiceGrid/></div></section>
+<section className="why-section content-width"><div><SectionLabel>WHY LEAD INSIGHTS</SectionLabel><h2>Experienced enough to advise.<br/><em>Close enough to act.</em></h2><img src={dialogue} width={1536} height={1024} alt="Editorial illustration of African executives engaged in a thoughtful leadership conversation" loading="lazy"/></div><ol>{experience.map((p,i)=><li key={p}><span>0{i+1}</span><p>{p}</p></li>)}</ol></section>
+<section className="growth-section"><div className="content-width"><SectionLabel>INTERNATIONAL GROWTH & MARKET ENTRY</SectionLabel><div className="section-heading"><h2>A trusted partner for<br/> organisations building in Africa.</h2><p>For international organisations, market entry depends on more than research. It requires local context, trusted introductions, a clear commercial approach and the ability to build momentum on the ground.</p></div><MarketSteps/><ConversationButton interest="Market entry support">Discuss market entry</ConversationButton></div></section>
+<section className="mentor-feature mentor-theme"><div className="content-width split-section"><img src={dialogue} width={1536} height={1024} loading="lazy" alt="Editorial illustration of a meaningful mentoring conversation among African business leaders"/><div><SectionLabel>A LEAD INSIGHTS AFRICA PLATFORM</SectionLabel><h2>MentorCircle<br/><em>Conversations</em></h2><p>A Lead Insights Africa platform for coaching, mentoring, career development and leadership programmes. MentorCircle creates space for individuals and teams to reflect, grow and lead with greater confidence.</p><div className="hero-actions"><Button asChild className="action-button"><Link to="/mentorcircle">Discover MentorCircle <ArrowUpRight/></Link></Button><ConversationButton className="quiet-button" interest="MentorCircle Conversations">Register interest</ConversationButton></div></div></div></section>
+<JaneFeature/><ClosingCTA/></>;}

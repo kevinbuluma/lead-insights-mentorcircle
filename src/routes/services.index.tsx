@@ -1,0 +1,7 @@
+import {createFileRoute} from '@tanstack/react-router';
+import {PageHero,ServiceGrid,SectionLabel,ClosingCTA} from '@/components/site/editorial';
+import {ConversationButton} from '@/components/site/site-shell';
+import {services,serviceGroups} from '@/content/site';
+import {pageHead} from '@/lib/seo';
+export const Route=createFileRoute('/services/')({component:Services,head:()=>pageHead('Our services','Strategic advisory, market representation, investor advisory, experience transformation, leadership coaching and capacity building.','/services')});
+function Services(){return <><PageHero eyebrow="OUR SERVICES" title="Expertise for the decisions, relationships and change ahead." description="Integrated advisory across strategy, growth, organisational experience and leadership. Shaped around your context, not a standard playbook."/><section className="content-width section-band"><ServiceGrid/></section><section className="services-section"><div className="content-width"><SectionLabel>OUR ADVISORY AREAS</SectionLabel>{serviceGroups.map((g,i)=><div className="service-detail" key={g.title}><span className="detail-number">0{i+1}</span><h2>{g.title}</h2><ul>{g.items.map(v=><li key={v}>{v}</li>)}</ul></div>)}</div></section><section className="content-width section-band"><SectionLabel>IN FOCUS</SectionLabel>{services.map((s,i)=><div className="service-focus" key={s.slug}><h3>{s.title}</h3><p>{s.description}</p>{i%2===1&&<ConversationButton interest={s.title}>Talk to an advisor</ConversationButton>}</div>)}</section><ClosingCTA/></>;}

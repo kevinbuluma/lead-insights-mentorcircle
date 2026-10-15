@@ -10,33 +10,215 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as InternationalGrowthRouteImport } from './routes/international-growth'
+import { Route as JaneMburiaRouteImport } from './routes/jane-mburia'
+import { Route as LeadershipCultureRouteImport } from './routes/leadership-culture'
+import { Route as MentorcircleRouteImport } from './routes/mentorcircle'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InternationalGrowthRoute = InternationalGrowthRouteImport.update({
+  id: '/international-growth',
+  path: '/international-growth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JaneMburiaRoute = JaneMburiaRouteImport.update({
+  id: '/jane-mburia',
+  path: '/jane-mburia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeadershipCultureRoute = LeadershipCultureRouteImport.update({
+  id: '/leadership-culture',
+  path: '/leadership-culture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorcircleRoute = MentorcircleRouteImport.update({
+  id: '/mentorcircle',
+  path: '/mentorcircle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
+  id: '/api/public/contact',
+  path: '/api/public/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
+  '/international-growth': typeof InternationalGrowthRoute
+  '/jane-mburia': typeof JaneMburiaRoute
+  '/leadership-culture': typeof LeadershipCultureRoute
+  '/mentorcircle': typeof MentorcircleRoute
+  '/privacy': typeof PrivacyRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/terms': typeof TermsRoute
+  '/api/contact': typeof ApiContactRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/services/': typeof ServicesIndexRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
+  '/international-growth': typeof InternationalGrowthRoute
+  '/jane-mburia': typeof JaneMburiaRoute
+  '/leadership-culture': typeof LeadershipCultureRoute
+  '/mentorcircle': typeof MentorcircleRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
+  '/api/contact': typeof ApiContactRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/services': typeof ServicesIndexRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/insights': typeof InsightsRoute
+  '/international-growth': typeof InternationalGrowthRoute
+  '/jane-mburia': typeof JaneMburiaRoute
+  '/leadership-culture': typeof LeadershipCultureRoute
+  '/mentorcircle': typeof MentorcircleRoute
+  '/privacy': typeof PrivacyRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/terms': typeof TermsRoute
+  '/api/contact': typeof ApiContactRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/services/': typeof ServicesIndexRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/insights'
+    | '/international-growth'
+    | '/jane-mburia'
+    | '/leadership-culture'
+    | '/mentorcircle'
+    | '/privacy'
+    | '/services'
+    | '/terms'
+    | '/api/contact'
+    | '/services/$slug'
+    | '/services/'
+    | '/api/public/contact'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/insights'
+    | '/international-growth'
+    | '/jane-mburia'
+    | '/leadership-culture'
+    | '/mentorcircle'
+    | '/privacy'
+    | '/terms'
+    | '/api/contact'
+    | '/services/$slug'
+    | '/services'
+    | '/api/public/contact'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/insights'
+    | '/international-growth'
+    | '/jane-mburia'
+    | '/leadership-culture'
+    | '/mentorcircle'
+    | '/privacy'
+    | '/services'
+    | '/terms'
+    | '/api/contact'
+    | '/services/$slug'
+    | '/services/'
+    | '/api/public/contact'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  InsightsRoute: typeof InsightsRoute
+  InternationalGrowthRoute: typeof InternationalGrowthRoute
+  JaneMburiaRoute: typeof JaneMburiaRoute
+  LeadershipCultureRoute: typeof LeadershipCultureRoute
+  MentorcircleRoute: typeof MentorcircleRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
+  TermsRoute: typeof TermsRoute
+  ApiContactRoute: typeof ApiContactRoute
+  ApiPublicContactRoute: typeof ApiPublicContactRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +230,135 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/international-growth': {
+      id: '/international-growth'
+      path: '/international-growth'
+      fullPath: '/international-growth'
+      preLoaderRoute: typeof InternationalGrowthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jane-mburia': {
+      id: '/jane-mburia'
+      path: '/jane-mburia'
+      fullPath: '/jane-mburia'
+      preLoaderRoute: typeof JaneMburiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leadership-culture': {
+      id: '/leadership-culture'
+      path: '/leadership-culture'
+      fullPath: '/leadership-culture'
+      preLoaderRoute: typeof LeadershipCultureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentorcircle': {
+      id: '/mentorcircle'
+      path: '/mentorcircle'
+      fullPath: '/mentorcircle'
+      preLoaderRoute: typeof MentorcircleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/api/public/contact': {
+      id: '/api/public/contact'
+      path: '/api/public/contact'
+      fullPath: '/api/public/contact'
+      preLoaderRoute: typeof ApiPublicContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface ServicesRouteChildren {
+  ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesSlugRoute: ServicesSlugRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  InsightsRoute: InsightsRoute,
+  InternationalGrowthRoute: InternationalGrowthRoute,
+  JaneMburiaRoute: JaneMburiaRoute,
+  LeadershipCultureRoute: LeadershipCultureRoute,
+  MentorcircleRoute: MentorcircleRoute,
+  PrivacyRoute: PrivacyRoute,
+  ServicesRoute: ServicesRouteWithChildren,
+  TermsRoute: TermsRoute,
+  ApiContactRoute: ApiContactRoute,
+  ApiPublicContactRoute: ApiPublicContactRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

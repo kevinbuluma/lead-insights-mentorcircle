@@ -2,7 +2,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { ArrowUpRight, ArrowDown, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ConversationButton } from '@/components/site/site-shell';
-import { SectionLabel, ServiceGrid, MarketSteps, JaneFeature, ClosingCTA, city, dialogue } from '@/components/site/editorial';
+import { SectionLabel, ServiceGrid, MarketSteps, JaneFeature, ClosingCTA, city, dialogue,mentorLogo} from '@/components/site/editorial';
 import { experience } from '@/content/site';
 import { pageHead } from '@/lib/seo';
 export const Route=createFileRoute('/')({component:Home,head:()=>({...pageHead('Strategic advisory, growth & leadership across Africa','Nairobi-based strategic advisory, market access, leadership and transformation, founded and led by Jane Mburia.','/'),scripts:[{type:'application/ld+json',children:JSON.stringify({'@context':'https://schema.org','@type':'Organization',name:'Lead Insights Africa Consulting',founder:{'@type':'Person',name:'Jane Mburia'},email:'jmburia@leadinsightsafrica.com',telephone:'+254721228498',address:{'@type':'PostalAddress',addressLocality:'Nairobi',addressCountry:'KE'},sameAs:['https://www.linkedin.com/in/jane-mburia']})}]})});

@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { navigation, services, brand } from '@/content/site';
 import { EnquiryForm } from './enquiry-form';
+import leadLogo from '@/assets/lead-insights-logo.png.asset.json';
+import mentorLogo from '@/assets/mentorcircle-logo.png.asset.json';
 const ConversationContext=createContext<(interest?:string,type?:'general'|'individual'|'corporate')=>void>(()=>{});
 export function ConversationButton({children='Start a conversation',interest='',type='general',className=''}:{children?:ReactNode;interest?:string;type?:'general'|'individual'|'corporate';className?:string}) {const open=useContext(ConversationContext);return <Button className={`action-button ${className}`} onClick={()=>open(interest,type)}>{children}<ArrowUpRight/></Button>;}
-export function BrandName({footer=false}:{footer?:boolean}) {return <Link to="/" className={`brand-name ${footer?'brand-footer':''}`} aria-label="Lead Insights Africa Consulting home"><span>LEAD INSIGHTS</span><span>AFRICA CONSULTING</span></Link>;}
+export function BrandName({footer=false}:{footer?:boolean}) {return <Link to="/" className={`brand-logo ${footer?'brand-logo-footer':''}`} aria-label="Lead Insights Africa Consulting home"><img src={leadLogo.url} alt="Lead Insights Africa Consulting logo" width={387} height={94}/></Link>;}
 export function SiteShell({children}:{children:ReactNode}) {
  const [mobile,setMobile]=useState(false);const [dropdown,setDropdown]=useState<'about'|'services'|null>(null);const [open,setOpen]=useState(false);const [interest,setInterest]=useState('');const [type,setType]=useState<'general'|'individual'|'corporate'>('general');
  const path=useRouterState({select:s=>s.location.pathname});
